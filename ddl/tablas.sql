@@ -57,5 +57,7 @@ CREATE TABLE resumen_socios_entrenadores (
     id_resumen INT AUTO_INCREMENT PRIMARY KEY,
     id_entrenador INT NOT NULL,
     cantidad_socios_asignados INT NOT NULL,
-    fecha_resumen DATE NOT NULL
+    fecha_resumen DATE NOT NULL,
+    UNIQUE KEY uq_resumen_entrenador_fecha (id_entrenador, fecha_resumen),
+    FOREIGN KEY (id_entrenador) REFERENCES entrenadores(id_entrenador)
 );
