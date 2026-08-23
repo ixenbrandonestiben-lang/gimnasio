@@ -36,7 +36,9 @@ BEGIN
         CURDATE()
     FROM entrenadores AS e
     LEFT JOIN inscripciones AS i ON e.id_entrenador = i.id_entrenador_asignado
-    GROUP BY e.id_entrenador;
+    GROUP BY e.id_entrenador
+    ON DUPLICATE KEY UPDATE
+        cantidad_socios_asignados = VALUES(cantidad_socios_asignados);
 END//
 
 DELIMITER ;
