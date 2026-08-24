@@ -1,6 +1,10 @@
+use gimnasio_db;
 
 -- Programación del reporte diario de socios
-DROP EVENT IF EXISTS evento_contar_socios_por_entrenador//
+DROP EVENT IF EXISTS evento_contar_socios_por_entrenador;
+
+delimiter //
+
 CREATE EVENT evento_contar_socios_por_entrenador
 ON SCHEDULE EVERY 1 DAY
 STARTS '2026-08-15 23:59:00'
@@ -16,4 +20,10 @@ BEGIN
     GROUP BY e.id_entrenador
     ON DUPLICATE KEY UPDATE
         cantidad_socios_asignados = VALUES(cantidad_socios_asignados);
-END//
+        
+END //
+
+delimiter ;
+
+
+show variables like 'event_scheduler';
