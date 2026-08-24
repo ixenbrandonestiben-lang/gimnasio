@@ -15,6 +15,7 @@ INNER JOIN sedes AS se ON i.id_sede_inscripcion = se.id_sede;
 
 -- Filtrado de socios por tipo de plan
 SELECT
+    DISTINCT
     s.id_socio,
     s.nombre_socio,
     s.apellido_socio,
